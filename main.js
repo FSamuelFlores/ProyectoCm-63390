@@ -1,4 +1,4 @@
-function cotizar(){
+/*function cotizar(){
     let identificar = true
     let intentos = 2
     let precio = 200
@@ -38,4 +38,44 @@ function cotizar(){
     }while(indenticar)
 }
 
-cotizar()
+cotizar()*/
+
+const Productos = function(nombre, precio, stock){
+    this.nombre= nombre
+    this.precio = precio
+    this.stock = stock
+}
+let producto1  = new Producto("Pulsera oro 18k",10000,2)
+let producto2  = new Producto("Rolex 18k",2500000,1)
+let producto3  = new Producto("Cadena Hombre 18k",1850000,1)
+let producto4  = new Producto("Cadena Mujer 18k",1200000,1)
+
+
+let lista = [producto1,producto2,producto3,producto4]
+
+
+function filtrarProducto(){
+    let palabraClave = prompt("Ingrese el producto solicitado")
+    let resultado = lista.filter((x)=>x.nombre.toUpperCase().includes(palabraClave))
+
+    if (resultado.length >0){
+        console.table(resultado)
+
+    }else{
+        alert("no se encontró el producto")
+    }
+}
+
+function agregarProducto(){
+let nombre= prompt("ingresa el nombre del producto")
+let precio = prompt("ingresa el precio del producto")
+let stock = prompt("ingresa el stock del producto")
+
+if(isNaN(precio) || isNaN(stock) || nombre == ""){
+    alert("por favor ingrese valores validos")
+    return
+}
+let producto = new Producto (nombre,precio,stock)
+lista.push(producto)
+console.table(lista)
+}
